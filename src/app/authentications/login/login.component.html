@@ -1,0 +1,43 @@
+
+<div class="login-wrapper">
+
+    <div class="login-card d-flex">
+        
+        <div class="login-container">
+    
+            <h2 class="text-center mt-3">Login</h2>
+            <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="">
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Enter Username</mat-label>
+                  <input type="text" matInput formControlName="userName" placeholder="Ex. alex">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+                <mat-form-field class="example-full-width w-100 mt-3">
+                    <mat-label>Enter Password</mat-label>
+                    <input type="password" matInput formControlName="password">
+                    <mat-hint></mat-hint>
+                   
+                  </mat-form-field>
+            
+                 <div class="mt-4 d-flex justify-content-center">
+                    <button type="submit" mat-raised-button color="primary" class="">Submit</button>
+                    <button type="reset" mat-raised-button color="warn" class="ml-3">Reset</button>
+                
+                 </div>
+
+                 <p class="mt-4 text-center">Dont Have a account? <span>
+                     <a routerLink="/auth/register"> Register here</a>
+                 </span></p>
+                  
+              </form>
+        </div>
+        <div class="img-section">
+            <img class="img-fluid" src="../../../assets/login-aside.png" alt="side">
+        </div>
+    </div>
+</div>
+
+
+
+    
+    

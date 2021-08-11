@@ -1,0 +1,33 @@
+
+<div class="container">
+    <mat-form-field class="example-full-width w-50 mb-4">
+        <mat-label>Search...</mat-label>
+        <input type="text"
+        [(ngModel)]="searchKey" matInput
+        placeholder="Electronics">
+    </mat-form-field>
+
+
+    <div class="grid">
+        <article class="card books-container" [id]= "item.id" *ngFor="let item of listOfProducts | filter:searchKey">
+            <div class="card-body">
+                <div class="card-wrapper">
+                    <div class="img-source text-center w-100">
+                        <img class="img-fluid" src={{item.image}} alt="img"/>
+                    </div>
+                    <div class="product-data mt-5">
+                        <p class="product-name"> <strong> {{item.title | titlecase}}</strong></p>
+                        <h2 class="product-price">{{item.price | currency: 'USD'}}</h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex justify-content-between product-control-wrapper">
+                <button  mat-raised-button color="primary" class="">Buy Now</button>
+                <button  mat-raised-button color="warn" [id]= "item.id" (click)="viewProduct($event)" class="">View Product</button>
+            </div>
+        </article>
+    </div>
+</div>
+
+    

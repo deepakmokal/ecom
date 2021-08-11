@@ -1,0 +1,20 @@
+
+<div class="container">
+    <div class="row mt-5 pt-5">
+        
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <img [src]="data_prod[0].image" height="400" width="400" alt="Image here">
+        
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <h2>{{data_prod[0].title}}</h2>
+            <p class="text-warning text-capitalize mb-4">{{data_prod[0].category}}</p>
+            <p class="mb-5"> {{data_prod[0].description}}</p>
+            <h2 class="text-success">${{data_prod[0].price}}</h2>
+            <button mat-raised-button color="primary"
+            class="">Add To Card</button>
+    
+        </div>
+    </div>
+</div>
+

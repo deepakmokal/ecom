@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;700&display=swap');
+
+
+.container {
+    padding: 10px 20px;
+}
+
+.grid {
+    display: grid;
+    -ms-grid-columns: (minmax(480px, 1fr)) [auto-fill];
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    grid-gap: 30px;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+  }
+  
+  .grid > article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+    background: #fff;
+    padding: 1em;
+    position: relative;
+    border-radius: 10px;
+  }
+
+
+.card-wrapper .img-source {
+    height: 300px;
+    width: 200px;
+    text-align: center;
+    img{
+        height: 100%;
+        width: 100%;
+    }
+}
+
+
+.book-data .book-name {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #3e3e3e;
+    font-size: 16px;
+}
+
+.book-data span.wrapper-type{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    
+    font-weight: bold;
+    color: #928d90;
+}
+
+.artist-name{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: capitalize;
+    /* font-weight: bold; */
+    color: #585757;
+   
+}
+
+.primary-text {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #3e3e3e;
+    font-weight: bold;
+}
+
+.genre {
+    font-style: italic;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #585757;
+}
+
+.book-description{
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    letter-spacing: .5px;
+    font-size: 14px;
+    color: #0e0d0d;
+}
+
+.copyright{
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 11px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    /* transform: translate(50%, 50%); */
+}
+
+
+.buy-btn {
+text-align: right;
+}
+
+.action-wrapper button.buy-button{
+    background-color: rgb(49, 62, 179);
+    border: 1px solid rgb(49, 62, 179);
+    color: #fff;
+    font-weight: bold;
+    padding: .5em;
+    height: 54px;
+    border-radius: 10px;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgb(83, 82, 82);
+    text-shadow:  2px 2px #3e3e3e;
+    
+    /* margin: 0 auto; */
+
+}
+
+.action-wrapper button.buy-button:hover{
+    background-color: rgb(9, 25, 173);
+}
+
+.product-control-wrapper {
+    background-color: #fff !important;
+}
+

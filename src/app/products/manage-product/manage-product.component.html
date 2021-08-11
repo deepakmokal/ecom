@@ -1,0 +1,80 @@
+
+<div class="container">
+<div class="card shadow mt-5">
+  <div class="card-header">
+    <div class="title_container">
+      <h2 class="text-dark">Manage Product</h2>
+    </div>
+  </div>
+  <div class="card-body p-3">
+    <div class="form_wrapper">
+      <div class="form_container">
+        
+        <div class="row clearfix">
+          <div class="col-md-6 col-12">
+            <form class="" [formGroup]=manageForm>
+              <mat-form-field class="example-full-width w-100">
+                  <mat-label>Enter Product Name</mat-label>
+                  <input type="text" matInput formControlName="title" placeholder="">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Select Catergory</mat-label>
+                  <mat-select formControlName="category">
+                    <mat-option *ngFor="let item of categoryOfProducts" [value]="item.value">
+                      {{item.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Enter Price</mat-label>
+                  <input type="text" matInput formControlName="price" placeholder="">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Enter Poduct Quantity</mat-label>
+                  <input type="number" matInput formControlName="quantity" placeholder="">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width w-100" appearance="fill">
+                  <mat-label>Image URL Path</mat-label>
+                  <input type="text" matInput formControlName="image" placeholder="">
+                  <mat-hint></mat-hint>
+                </mat-form-field>
+  
+                <mat-form-field class="example-full-width w-100">
+                  <mat-label>Description</mat-label>
+                  <textarea matInput
+                            cdkTextareaAutosize
+                            formControlName="description"
+                            cdkAutosizeMinRows="3"
+                            cdkAutosizeMaxRows="5"></textarea>
+                </mat-form-field>
+              
+                <div class="row w-100 p-3">
+
+                  <button type="submit" (click)="manageClicked()"
+                  mat-raised-button color="primary" class="">{{ isUpdateRequest ? 'Update Product' : 'Add Product' }}</button>
+
+                  <button type="reset" mat-raised-button color="warn" class="ml-3">Reset</button>
+
+                </div>
+              
+            </form>
+          </div>
+
+          <div class="col-md-6 col-12">
+              <img src="../../../assets/add-pink.svg" height="400" width="400" alt="configure image">
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+  
+</div>    
+
+</div>

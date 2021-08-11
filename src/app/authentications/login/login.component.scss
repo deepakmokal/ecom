@@ -1,0 +1,32 @@
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    
+    .login-card{
+        border: 1px solid pink;
+        border-radius: 20px;
+        box-shadow: 2px 2px 3px #eee;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+         min-width: 500px;
+         height: auto;
+        .img-section {
+            height: 450px;
+            width: 400px;
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+        
+        .login-container {
+         padding: 2em;   
+        }
+        }
+}
+
