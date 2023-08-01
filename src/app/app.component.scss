@@ -1,7 +1,13 @@
 .navbar-light .navbar-nav .nav-link {
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 1px;
-    margin-top: 5px;
-    text-shadow: 2px 1px 2px #111;
+    color: rgb(78, 77, 77);
+}
+
+
+.navbar-light .navbar-nav .nav-link:hover {
+  transform: scale(1.05);
+  font-weight: 500;
+  transition-duration: .4s;
+  animation-timing-function:ease;
+  background-color: #eee;
+  border-radius:4px;
 }

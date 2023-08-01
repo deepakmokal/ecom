@@ -62,7 +62,7 @@ export class ManageProductComponent implements OnInit {
       description: new FormControl(null, Validators.required),
       category: new FormControl(null, Validators.required),
       image: new FormControl('https://i.pravatar.cc/', Validators.required),
-      quantity: new FormControl(null, Validators.required),
+      quantity: new FormControl(null, [Validators.required, Validators.min(1)]),
     });
   }
   isValid(controlName: any){
@@ -71,10 +71,12 @@ export class ManageProductComponent implements OnInit {
   }
 
   manageClicked(){
-    
+    debugger;
     let formValue = this.manageForm.value;
     let id = this.getId(this.isUpdateRequest, this.updateId);
-    let idObj = { 'id': id, 'isItemDeleted': this.isItemDeleted, 'status': this.status } 
+    let newStatus = (formValue.quantity !== 0) ? 'In Stock' : 'Out Of Stock';
+    
+    let idObj = { 'id': id, 'isItemDeleted': this.isItemDeleted, 'status': newStatus } 
     let formValuesWithID = Object.assign(idObj, formValue)
     this.listOfProduct.push(formValuesWithID)
     console.log(this.listOfProduct);

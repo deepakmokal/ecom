@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { filter, map } from 'rxjs/operators';
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.component.html',
@@ -15,7 +16,11 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.productService.getAllProducts().subscribe(
+    this.productService.getAllProducts()
+    .pipe(
+      map( results => results.filter( r => r.isItemDeleted == false) )
+    )
+    .subscribe(
       data => {
         this.listOfProducts = data
            
@@ -31,6 +36,13 @@ export class InventoryComponent implements OnInit {
         id: productId
       }
     })
+    }
+
+    onDeleteClicked(productId:any){
+    
+     this.productService.deleteProduct(productId).subscribe(
+      data => alert('Procuct Deleted Successfully'),
+     )
     }
 
 }

@@ -1,33 +1,68 @@
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-sm-2">
+        <div class="categories-wrapper bg-light px-2 py-1 mt-4">
+          <h2 class="">Categories</h2>
+          <ul>
+            <li *ngFor="let category of categories">
+              <mat-checkbox [color]="themeColor" (change)="onCategoryChange($event.checked, category)">
+                {{ category | titlecase }}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </div>
 
-<div class="container">
-    <mat-form-field class="example-full-width w-50 mb-4">
-        <mat-label>Search...</mat-label>
-        <input type="text"
-        [(ngModel)]="searchKey" matInput
-        placeholder="Electronics">
-    </mat-form-field>
-
-
-    <div class="grid">
-        <article class="card books-container" [id]= "item.id" *ngFor="let item of listOfProducts | filter:searchKey">
-            <div class="card-body">
-                <div class="card-wrapper">
-                    <div class="img-source text-center w-100">
-                        <img class="img-fluid" src={{item.image}} alt="img"/>
-                    </div>
-                    <div class="product-data mt-5">
-                        <p class="product-name"> <strong> {{item.title | titlecase}}</strong></p>
-                        <h2 class="product-price">{{item.price | currency: 'USD'}}</h2>
-
-                    </div>
-                </div>
-            </div>
-            <div class="card-footer d-flex justify-content-between product-control-wrapper">
-                <button  mat-raised-button color="primary" class="">Buy Now</button>
-                <button  mat-raised-button color="warn" [id]= "item.id" (click)="viewProduct($event)" class="">View Product</button>
-            </div>
-        </article>
-    </div>
-</div>
-
+      </div>
     
+    <div class="col-12 col-sm-10">
+      <div class="filter-container d-flex justify-content-between align-items-center">
+        <mat-form-field class="example-full-width w-50 mt-3 mb-4">
+          <mat-label>Search Products <mat-icon class="ml-2 font-weight-bold">edit</mat-icon></mat-label>
+          <input type="text" [(ngModel)]="searchKey" matInput placeholder="Electronics">
+        </mat-form-field>
+
+        <!-- TODO: Filter based on catergory -->
+        <mat-form-field appearance="fill">
+          <mat-label>Sort by</mat-label>
+          <mat-select (selectionChange)="filterProductDropdown($event)">
+            <mat-option value="All">Recommended</mat-option>
+            <mat-option value="priceLowToHigh">Price: Low to High</mat-option>
+            <mat-option value="priceHighToLow">Price: High to Low</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="grid">
+        <article class="card books-container" [id]="item.id"
+          *ngFor="let item of filteredProducts.slice(0, itemsToShow) | filter:searchKey">
+          <div class="card-image">
+            <div class="img-source mb-3 text-center w-100">
+              <img class="img-fluid" src={{item.image}} alt="img" />
+            </div>
+          </div>
+          <div class="card-body p-0">
+            <div class="card-wrapper">
+              <div class="product-data">
+                <a class="product-name stretched-link mb-2" [id]="item.id" (click)="viewProduct($event)"> {{item.title | titlecase}}</a>
+                <div class="product-actions d-flex justify-content-between align-items-center">
+                  <h2 class="product-price mb-0">{{item.price | currency: 'INR'}}</h2>
+                  <div class="like-counter">
+                    <button class="btn" href="#">Like | <strong> {{item.totalLikes}}</strong></button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- <div class="card-footer d-flex justify-content-center product-control-wrapper">
+            <a mat-raised-button stretched-link [id]="item.id" (click)="viewProduct($event)" class="w-100">View
+              Product</a>
+          </div> -->
+        </article>
+      </div>
+      <button class="btn btn-link d-flex justify-content-center w-100 mt-3 mb-3" (click)="loadMore()"
+        *ngIf="itemsToShow < listOfProducts.length">Load More</button>
+    </div>
+  </div>
+
+  </div>

@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    debugger
+    
     let formsValue = this.registerForm.value;
     let userTypeObj = { 'usertype': 'user' }
     let user = Object.assign(userTypeObj, formsValue)

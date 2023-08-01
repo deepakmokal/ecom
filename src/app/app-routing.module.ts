@@ -7,7 +7,7 @@ import { LoginComponent } from './authentications/login/login.component';
 
 LoginComponent
 const routes: Routes = [
-  
+  {path: '', loadChildren: () => import('./authentications/authentications.module').then(m => m.AuthenticationsModule)},
   { path: 'auth', loadChildren: () => import('./authentications/authentications.module').then(m => m.AuthenticationsModule) },
   { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
   {path: "**", component: PageNotFoundComponent},

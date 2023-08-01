@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared/shared.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -16,13 +16,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './authentications/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
 import {TableModule} from 'primeng/table';
 
 
-
 import { ProductsRoutingModule } from './products/products-routing.module';
-// import { ShortenPipe } from './pipes/shorten.pipe';
+import { HttperrorInterceptor } from './services/httperror.interceptor';
 
 
 @NgModule({
@@ -30,7 +28,7 @@ import { ProductsRoutingModule } from './products/products-routing.module';
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
-    // ShortenPipe
+
   ],
   imports: [
     BrowserModule,
@@ -50,7 +48,14 @@ import { ProductsRoutingModule } from './products/products-routing.module';
     TableModule,
     MatSelectModule
   ],
-  providers: [],
+  
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttperrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

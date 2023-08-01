@@ -1,7 +1,7 @@
 <div class="container">
     <div class="card mt-5 shadow">
 
-        <p-table #dt1 [value]="listOfProducts" 
+        <p-table class="" #dt1 [value]="listOfProducts" 
         [paginator]="true"
         [rows]="10"
         sortMode="multiple" 
@@ -18,29 +18,33 @@
 
             <ng-template pTemplate="header">
                 <tr>
-                    <th pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
-                    <th pSortableColumn="title">Product Name <p-sortIcon field="title"></p-sortIcon></th>
-                    <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
-                    <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
-                    <th pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
-                    <th pSortableColumn="quantity">Quantity <p-sortIcon field="quantity"></p-sortIcon></th>
-                    <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
-                    <th>Actions</th>
+                    <th class="text-center" pSortableColumn="id">ID <p-sortIcon field="id"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="title">Product Name <p-sortIcon field="title"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="category">Category <p-sortIcon field="category"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="quantity">Quantity <p-sortIcon field="quantity"></p-sortIcon></th>
+                    <th class="text-center" pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                    <th class="text-center">Actions</th>
                     
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-product>
                 <tr>
-                    <td>{{product.id}}</td>
+                    <td class="text-center">{{product.id}}</td>
                     <td>{{product.title | titlecase}}</td>
                     <td>{{ product.description | shorten:40 }}</td>
-                    <td> {{product.price | currency: 'USD'}} </td>
+                    <td class="text-center"> {{product.price | currency: 'USD'}} </td>
                     <td>{{product.category | titlecase}}</td>
-                    <td>{{product.quantity}}</td>
-                    <td>{{product.status | uppercase}}</td>
-                    <td>
+                    <td class="text-center">{{product.quantity}}</td>
+                    <td class="text-center">
+                        <p class="badge" [ngClass]="{'badge-danger':product.status==='Out Of Stock', 
+                        'badge-success':product.status==='In Stock'                        
+                        }">{{product.status | uppercase}}</p>
+                    </td>
+                    <td class="text-center">
                       <a (click)="onEditClicked(product.id)" class="pi pi-pencil text-success"></a>
-                      <a  class="pi pi-trash ml-3 text-danger"></a>
+                      <a (click)="onDeleteClicked(product.id)"  class="pi pi-trash ml-3 text-danger"></a>
                     </td>
                     
                 </tr>
